@@ -36,4 +36,4 @@ unsafe = true
 [permalinks]
   portfolio = "/posts/:filename/"
 
-publishdir="https://sweetsica.github.io/hugo-aws/"
+publishdir="https://sweetsica.github.io/hugo-aws/public/"
