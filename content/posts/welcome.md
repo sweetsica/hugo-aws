@@ -5,13 +5,13 @@ title = 'Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System 
 layout= 'welcome'
 weight = 10
 author = 'Ngọc Bảo - Bảo Bảo Lucif'
-favicon = "/img/ava.png"
-logo = "/img/ava.png"
+favicon = "hugo-aws/public/img/ava.png"
+logo = "hugo-aws/public/img/ava.png"
 navallcaps = true
-sharing_image = "/img/ava.png"
+sharing_image = "hugo-aws/public/img/ava.png"
 +++
 
-![Amazon Elastic File System](/img/Picture1.jpg)
+![Amazon Elastic File System](hugo-aws/public/img/Picture1.jpg)
 
 1. [Amazon Elastic File System là gì?](#efs-la-gi)
 2. [Đặc điểm của EFS so với các hệ thống lưu trữ khác](#dac-diem-efs)
@@ -25,7 +25,7 @@ sharing_image = "/img/ava.png"
 Để đơn giản hóa, bạn có thể hiểu EC2 cung cấp cho bạn bộ công cụ giúp xây dựng một "máy tính ảo" với đầy đủ các thông số như bộ nhớ (ram), vi xử lý, hệ điều hành, bộ nhớ, thiết lập mạng v..v..
 Các máy chủ ảo có thể kết hợp với nhau để dễ dàng triển khai một cách nhanh chóng và có tính sẵn sàng. Người dùng cũng sẽ dự tính được chi phí trước cả khi thực sự dùng dịch vụ. Rất tiện lợi.
 
-![EFS](/img/Picture2.png)
+![EFS](hugo-aws/public/img/Picture2.png)
 
 ## Đặc điểm của EFS so với các hệ thống lưu trữ khác{#dac-diem-efs}
 **Giữa muôn vàn lựa chọn, tại sao lại là EFS?**
@@ -77,7 +77,7 @@ Tuy nhiên phải lưu ý. Ổ đĩa EBS có thể đính kèm vào cả máy Wi
 
 Chúng ta có thể tính trước mức giá phải trả cho EFS thông qua [**Công cụ tính giá Amazone EFS**](https://calculator.aws/#/addService/EFS). Giá được tính trên dung lượng lưu trữ, thông lượng và mức sử dụng trên một tháng (chưa bao gồm thuế). Dùng nhiều trả nhiều. Với cùng một lượng sử dụng, mức giá của EFS sẽ nhỉnh hơn so với việc sử dụng EBS. 
 
-![Bảng giá EFS](/img/Picture3.png)
+![Bảng giá EFS](hugo-aws/public/img/Picture3.png)
 
 *Khá chi tiết, với mức lưu trữ 30GB tôi mất khoản 2.91$ mỗi tháng*
 
@@ -93,15 +93,15 @@ Khi nào nên sử dụng EFS:
 ## Setup triển khai EFS{#setup-trien-khai-efs}
 Truy cập tài khoản -> Services ->
 
-![Step1](/img/Picture4.png)
+![Step1](hugo-aws/public/img/Picture4.png)
 
 File system -> Create new
 
-![Step2](/img/Picture5.png)
+![Step2](hugo-aws/public/img/Picture5.png)
 
 Attach vào VPC hiện tại và attach vào một instance Linux
 
-![Step3](/img/Picture6.png)
+![Step3](hugo-aws/public/img/Picture6.png)
 
 
 

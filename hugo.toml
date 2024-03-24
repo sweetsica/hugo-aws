@@ -3,10 +3,10 @@ languageCode = 'en-us'
 title = 'Sweetsica'
 theme= "Stack"
 [params]
-    favicon = "/img/ava.png"
-    logo = "/img/ava.png"
+    favicon = "hugo-aws/public/img/ava.png"
+    logo = "hugo-aws/public/img/ava.png"
     navallcaps = true
-    sharing_image = "/img/ava.png"
+    sharing_image = "hugo-aws/public/img/ava.png"
 
 name = "Stack"
 license = "GPL-3.0-only"
