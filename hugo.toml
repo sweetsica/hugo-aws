@@ -1,0 +1,37 @@
+baseURL = 'http://localhost:1313'
+languageCode = 'en-us'
+title = 'Sweetsica'
+theme= "Stack"
+[params]
+    favicon = "/img/ava.png"
+    logo = "/img/ava.png"
+    navallcaps = true
+    sharing_image = "/img/ava.png"
+
+name = "Stack"
+license = "GPL-3.0-only"
+
+tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
+
+features = [
+    "disqus",
+    "photoswipe",
+    "opengraph",
+    "widgets",
+    "darkmode",
+    "table of contents",
+    "search",
+]
+
+min_version = "0.123.0"
+
+[author]
+name = "Sweetsica"
+homepage = "https://sweetsica.com"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+# Permalinks
+[permalinks]
+  portfolio = "/posts/:filename/"

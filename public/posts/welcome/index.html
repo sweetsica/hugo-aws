@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
+<title>Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)</title>
+
+<link rel='canonical' href='http://localhost:1313/posts/welcome/'>
+
+<link rel="stylesheet" href="/scss/style.min.a98711dd77f882bba6c64662ae7c3515ce1792919805694d18301cf79deae512.css"><meta property='og:title' content="Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)">
+<meta property='og:description' content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
+<meta property='og:url' content='http://localhost:1313/posts/welcome/'>
+<meta property='og:site_name' content='Sweetsica'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2024-02-24T04:14:54-08:00'/><meta property='article:modified_time' content='2024-02-24T04:14:54-08:00'/>
+<meta name="twitter:title" content="Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)">
+<meta name="twitter:description" content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
+    <link rel="shortcut icon" href="/img/ava.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Sweetsica</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/welcome/">Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 24, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/img/Picture1.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Amazon Elastic File System"
+	
+	
+></p>
+<ol>
+<li><a class="link" href="#efs-la-gi" >Amazon Elastic File System là gì?</a></li>
+<li><a class="link" href="#dac-diem-efs" >Đặc điểm của EFS so với các hệ thống lưu trữ khác</a></li>
+<li><a class="link" href="#chi-phi-va-gia" >Chi phí và giá</a></li>
+<li><a class="link" href="#ket-luan" >Kết luận</a></li>
+<li><a class="link" href="#setup-trien-khai-efs" >Setup triển khai EFS (cơ bản)</a></li>
+</ol>
+<h2 id="efs-la-gi">Amazon Elastic File System là gì?</h2>
+<p>Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về <strong>EC2 (Amazon Elastic Compute Cloud)</strong>. Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi <strong>Amazon Web Services (AWS)</strong> giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.</p>
+<p>Để đơn giản hóa, bạn có thể hiểu EC2 cung cấp cho bạn bộ công cụ giúp xây dựng một &ldquo;máy tính ảo&rdquo; với đầy đủ các thông số như bộ nhớ (ram), vi xử lý, hệ điều hành, bộ nhớ, thiết lập mạng v..v..
+Các máy chủ ảo có thể kết hợp với nhau để dễ dàng triển khai một cách nhanh chóng và có tính sẵn sàng. Người dùng cũng sẽ dự tính được chi phí trước cả khi thực sự dùng dịch vụ. Rất tiện lợi.</p>
+<p><img src="/img/Picture2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="EFS"
+	
+	
+></p>
+<h2 id="dac-diem-efs">Đặc điểm của EFS so với các hệ thống lưu trữ khác</h2>
+<p><strong>Giữa muôn vàn lựa chọn, tại sao lại là EFS?</strong></p>
+<p>Để trả lời câu hỏi này chúng ta sẽ so sánh EFS cùng hai “anh em” chung nhà đó là EBS và S3.
+Thông thường, có thể sử dụng lưu trữ thông qua Amazon S3 hoặc <a class="link" href="https://aws.amazon.com/vi/ebs"  target="_blank" rel="noopener"
+    ><strong>Amazon Elastic Block Store</strong></a> (EBS) tuy nhiên:</p>
+<ul>
+<li><a class="link" href="https://aws.amazon.com/vi/s3/"  target="_blank" rel="noopener"
+    ><strong>Amazon S3</strong></a> hướng tới việc lưu trữ đối tượng (ảnh, vid, tài liệu v&hellip;v&hellip;), dung lượng 5Tb cho một đối tượng.</li>
+<li><a class="link" href="https://aws.amazon.com/vi/ebs"  target="_blank" rel="noopener"
+    ><strong>Amazon EBS</strong></a> lưu trữ khối nhưng chỉ sử dụng được cho một EC2 instance, ngoài ra bị giới hạn kích thước file = kích thước volume tạo.</li>
+</ul>
+<p>Vậy, với nhu cầu tạo ra nhiều <a class="link" href="https://aws.amazon.com/vi/ec2"  target="_blank" rel="noopener"
+    ><strong>EC2 instance</strong></a>, tối ưu tốc độ tải và truy cập cũng như quản lý, bảo mật những file có dung lượng lớn giữa nhiều <a class="link" href="https://aws.amazon.com/vi/ec2"  target="_blank" rel="noopener"
+    ><strong>EC2</strong></a> instant chúng ta nên sử dụng EFS.</p>
+<p><a class="link" href="https://aws.amazon.com/vi/efs"  target="_blank" rel="noopener"
+    ><strong>EFS</strong></a>: Hệ thống quản lý tệp toàn diện có khả năng mở rộng cao. Nó có thể được thiết lập sử dụng như một nguồn dữ liệu chung cho bất kỳ ứng dụng, tác vụ chạy trên nhiều EC2 instantces</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>EFS</strong></th>
+<th><strong>EBS</strong></th>
+<th><strong>S3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loại lưu trữ</td>
+<td>System</td>
+<td>Block</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>Dung lượng file</td>
+<td>47.9Tb / file</td>
+<td>Theo volume</td>
+<td>5Tb / file</td>
+</tr>
+<tr>
+<td>Dung lượng tối đa</td>
+<td>Không giới hạn</td>
+<td>16Tb hoặc 64Tb</td>
+<td>Không giới hạn</td>
+</tr>
+<tr>
+<td>Độ trễ</td>
+<td>Thấp, có thể tối ưu</td>
+<td>Thấp nhất trong cả 3</td>
+<td>Tùy theo yêu cầu</td>
+</tr>
+<tr>
+<td>Băng thông</td>
+<td>10+ GBs</td>
+<td>2GBs</td>
+<td>25+ GBs</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Bảng so sánh một số tính năng giữa 3 dịch vụ lưu trữ nhà Amazon</em></p>
+<p><a class="link" href="https://aws.amazon.com/vi/s3/"  target="_blank" rel="noopener"
+    ><strong>Amazon S3</strong></a> là dịch vụ lưu trữ đối tượng, như là ảnh, video, file, và các trang web cơ bản.
+<a class="link" href="https://aws.amazon.com/vi/ebs"  target="_blank" rel="noopener"
+    ><strong>Amazon EBS</strong></a> là dịch vụ lưu trữ khối cho các <a class="link" href="https://aws.amazon.com/vi/ec2"  target="_blank" rel="noopener"
+    ><strong>EC2 instance</strong></a> , đơn giản như là ổ cứng của máy tính.
+<a class="link" href="https://aws.amazon.com/vi/efs"  target="_blank" rel="noopener"
+    ><strong>Amazon EFS</strong></a> là hệ thống lưu trữ file cho nhiều các <a class="link" href="https://aws.amazon.com/vi/ec2"  target="_blank" rel="noopener"
+    ><strong>EC2 instance</strong></a>.</p>
+<p><strong>Khả năng Bảo mật và Sao lưu chủ động</strong></p>
+<p>EFS cung cấp khả năng kiểm soát quyền truy cập vào hệ thống bằng các quy tắc nhóm VPC và chính sách IAM. Nhóm bảo mật VPC giúp kiểm soát lưu lượng mạng vào ra hệ thống. Và bằng cách thêm chính sách IAM và thiết lập, bạn có thể kiểm soát máy khách nào có thể đính kèm tệp theo quyền.
+Ngoài ra, EFS còn cung cấp cơ chế bảo mật thông qua điểm truy cập và dịch vụ quản lý khóa (KMS) bạn có thể tham khảo thêm tại đây.</p>
+<p>Sao lưu cũng là một ưu điểm của EFS, với một bảng điều khiển tập trung cùng khả năng lập lịch sao lưu tự động, nhờ đó bạn có thể quản lý toàn phần việc sao lưu cùng dịch vụ Amazone EFS.
+Ngoài ra, EFS cũng có tính năng quản lý vòng đời, một tính năng tương tự như S3. Nôm na, EFS sẽ cho phép dịch chuyển tự động những khối dữ liệu không thường xuyên truy cập sang một lớp lữu trữ riêng giúp tích kiệm chi phí.</p>
+<p><strong>Hiệu suất</strong></p>
+<p>Không giống như EBS, bạn không thể tùy chọn cấu hình từng phần (như loại ổ đĩa, chỉ định IOPS, phiên bản EC2, v..v..) tuy nhiên hiệu suất cơ bản của EFS đủ nhanh cho hầu hết các loại hình công việc. Nguyên nhân là vì ES là một hệ thống lưu trữ tệp phân tán nên sẽ tập trung xử lý thông lượng mỗi giây cao hơn nhiều so với EBS.</p>
+<p><strong>Vậy còn Khả năng tương thích của EFS?</strong></p>
+<p>EFS tương tự như EBS, có thể sao chép và truy cập nhiều máy chủ trong cùng một tài khoản AZ. Tuy nhiên, EFS không bắt phải ước lượng trước kích thước cụ thể nên có thể tăng - giảm quy mô nhanh chóng và tự động để đáp ứng nhu cầu khối lượng công việc. Đây cũng có thể coi là một ưu điểm của EFS hơn so với EBS</p>
+<p>Tuy nhiên phải lưu ý. Ổ đĩa EBS có thể đính kèm vào cả máy Windows và các EC2 không dùng Win. Nhưng ổ đĩa EFS thì chỉ có thể sử dụng cho máy chủ dựa trên Linux.</p>
+<h2 id="chi-phi-va-gia">Chi phí và giá</h2>
+<p>Chúng ta có thể tính trước mức giá phải trả cho EFS thông qua <a class="link" href="https://calculator.aws/#/addService/EFS"  target="_blank" rel="noopener"
+    ><strong>Công cụ tính giá Amazone EFS</strong></a>. Giá được tính trên dung lượng lưu trữ, thông lượng và mức sử dụng trên một tháng (chưa bao gồm thuế). Dùng nhiều trả nhiều. Với cùng một lượng sử dụng, mức giá của EFS sẽ nhỉnh hơn so với việc sử dụng EBS.</p>
+<p><img src="/img/Picture3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Bảng giá EFS"
+	
+	
+></p>
+<p><em>Khá chi tiết, với mức lưu trữ 30GB tôi mất khoản 2.91$ mỗi tháng</em></p>
+<h2 id="ket-luan">Kết luận</h2>
+<p>Khi nào nên sử dụng EFS:</p>
+<ul>
+<li>Nếu bạn cần truy cập dữ liệu từ các máy khác nhau hoặc từ các availability zone khác nhau, EFS là lựa chọn tốt nhất cho bạn.</li>
+<li>EFS phù hợp nhất cho máy chủ tệp doanh nghiệp, hệ thống sao lưu, cụm Big Data lớn, hệ thống Massively Parallel Processing(MPP), Content Distribution Networks (CDN) và các trường hợp sử dụng lớn khác.</li>
+<li>EFS cũng dành cho các hệ thống yêu cầu nhiều thông lượng.</li>
+</ul>
+<h2 id="setup-trien-khai-efs">Setup triển khai EFS</h2>
+<p>Truy cập tài khoản -&gt; Services -&gt;</p>
+<p><img src="/img/Picture4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Step1"
+	
+	
+></p>
+<p>File system -&gt; Create new</p>
+<p><img src="/img/Picture5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Step2"
+	
+	
+></p>
+<p>Attach vào VPC hiện tại và attach vào một instance Linux</p>
+<p><img src="/img/Picture6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Step3"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Sweetsica
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.2">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
