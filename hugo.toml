@@ -1,4 +1,4 @@
-baseURL = 'https://sweetsica.github.io/hugo-aws/public'
+baseURL = 'http://example.com'
 languageCode = 'en-us'
 title = 'Sweetsica'
 theme= "Stack"
@@ -29,11 +29,5 @@ min_version = "0.123.0"
 name = "Sweetsica"
 homepage = "https://sweetsica.com"
 
-[markup.goldmark.renderer]
-unsafe = true
 
-# Permalinks
-[permalinks]
-  portfolio = "/posts/:filename/"
-
-publishdir="https://sweetsica.github.io/hugo-aws/public"
+publishdir="http://example.com"
