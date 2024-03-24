@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><script src="https://sweetsica.github.io/hugo-aws/public/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
 <title>Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)</title>
 
 <link rel='canonical' href='http://localhost:1313/posts/welcome/'>
 
-<link rel="stylesheet" href="/scss/style.min.a98711dd77f882bba6c64662ae7c3515ce1792919805694d18301cf79deae512.css"><meta property='og:title' content="Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)">
+<link rel="stylesheet" href="https://sweetsica.github.io/hugo-aws/public/scss/style.min.a98711dd77f882bba6c64662ae7c3515ce1792919805694d18301cf79deae512.css"><meta property='og:title' content="Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)">
 <meta property='og:description' content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
 <meta property='og:url' content='http://localhost:1313/posts/welcome/'>
 <meta property='og:site_name' content='Sweetsica'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2024-02-24T04:14:54-08:00'/><meta property='article:modified_time' content='2024-02-24T04:14:54-08:00'/>
 <meta name="twitter:title" content="Hệ thống lưu trữ tệp linh hoạt - Amazon Elastic File System (AWS)">
 <meta name="twitter:description" content="Amazon Elastic File System là gì? Đặc điểm của EFS so với các hệ thống lưu trữ khác Chi phí và giá Kết luận Setup triển khai EFS (cơ bản) Amazon Elastic File System là gì? Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về EC2 (Amazon Elastic Compute Cloud). Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi Amazon Web Services (AWS) giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.">
-    <link rel="shortcut icon" href="/img/ava.png" />
+    <link rel="shortcut icon" href="https://sweetsica.github.io/hugo-aws/public/img/ava.png" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                        <img src="https://sweetsica.github.io/hugo-aws/public/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -167,7 +167,7 @@
     <section class="article-content">
     
     
-    <p><img src="/img/Picture1.jpg"
+    <p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture1.jpg"
 	
 	
 	
@@ -188,7 +188,7 @@
 <p>Đầu tiên, để bắt đầu chúng ta sẽ tìm hiểu qua về <strong>EC2 (Amazon Elastic Compute Cloud)</strong>. Đây là một cơ sở hạ tầng điện toán đám mây được cung cấp bởi <strong>Amazon Web Services (AWS)</strong> giúp cung cấp các tài nguyên liên quan tới ảo hóa máy tính theo yêu cầu.</p>
 <p>Để đơn giản hóa, bạn có thể hiểu EC2 cung cấp cho bạn bộ công cụ giúp xây dựng một &ldquo;máy tính ảo&rdquo; với đầy đủ các thông số như bộ nhớ (ram), vi xử lý, hệ điều hành, bộ nhớ, thiết lập mạng v..v..
 Các máy chủ ảo có thể kết hợp với nhau để dễ dàng triển khai một cách nhanh chóng và có tính sẵn sàng. Người dùng cũng sẽ dự tính được chi phí trước cả khi thực sự dùng dịch vụ. Rất tiện lợi.</p>
-<p><img src="/img/Picture2.png"
+<p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture2.png"
 	
 	
 	
@@ -278,7 +278,7 @@ Ngoài ra, EFS cũng có tính năng quản lý vòng đời, một tính năng 
 <h2 id="chi-phi-va-gia">Chi phí và giá</h2>
 <p>Chúng ta có thể tính trước mức giá phải trả cho EFS thông qua <a class="link" href="https://calculator.aws/#/addService/EFS"  target="_blank" rel="noopener"
     ><strong>Công cụ tính giá Amazone EFS</strong></a>. Giá được tính trên dung lượng lưu trữ, thông lượng và mức sử dụng trên một tháng (chưa bao gồm thuế). Dùng nhiều trả nhiều. Với cùng một lượng sử dụng, mức giá của EFS sẽ nhỉnh hơn so với việc sử dụng EBS.</p>
-<p><img src="/img/Picture3.png"
+<p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture3.png"
 	
 	
 	
@@ -298,7 +298,7 @@ Ngoài ra, EFS cũng có tính năng quản lý vòng đời, một tính năng 
 </ul>
 <h2 id="setup-trien-khai-efs">Setup triển khai EFS</h2>
 <p>Truy cập tài khoản -&gt; Services -&gt;</p>
-<p><img src="/img/Picture4.png"
+<p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture4.png"
 	
 	
 	
@@ -309,7 +309,7 @@ Ngoài ra, EFS cũng có tính năng quản lý vòng đời, một tính năng 
 	
 ></p>
 <p>File system -&gt; Create new</p>
-<p><img src="/img/Picture5.png"
+<p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture5.png"
 	
 	
 	
@@ -320,7 +320,7 @@ Ngoài ra, EFS cũng có tính năng quản lý vòng đời, một tính năng 
 	
 ></p>
 <p>Attach vào VPC hiện tại và attach vào một instance Linux</p>
-<p><img src="/img/Picture6.png"
+<p><img src="https://sweetsica.github.io/hugo-aws/public/img/Picture6.png"
 	
 	
 	
